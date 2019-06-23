@@ -47,23 +47,23 @@
     <script src="/node_modules/jquery/dist/jquery.min.js"></script>
     <script>
         $(function() {
-            $('#form').on('click', function(e) {
+            $('#form').on('submit', function(e) {
                 // console.log('ok');
                 // 取消表单默认提交事件
-                e.preventDefault;
+                e.preventDefault();
                 // 当取消了用户默认提交后，手动发起AJAX，提交表单
                 $.ajax({
-                    url: 'register',
+                    url: '/register',
                     type: 'post',
                     data: $('#form').serialize(),
                     dataType: 'json',
-                    success: function(res) {
-                        console.log(res);
+                    success: function(result) {
+                        console.log(result);
 
-                        if (res.status !== 200) {
-                            return alert(res.msg)
-                        }
-                        location.herf = 'login'
+                        // if (result.status !== 200) {
+                        //     return alert(result.msg)
+                        // }
+                        // location.herf = 'login'
                     }
                 })
             })
