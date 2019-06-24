@@ -58,8 +58,11 @@
                     data: $('#form').serialize(),
                     dataType: 'json',
                     success: function(result) {
-                        console.log(result);
-
+                        if (result.status !== 200) {
+                            // 登录失败给出提示
+                            return alert(result.msg);
+                        }
+                        location.href = '/'
                     }
                 })
             })
